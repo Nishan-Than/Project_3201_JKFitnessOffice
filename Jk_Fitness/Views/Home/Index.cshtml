@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-12 col-sm-12">
+        <div class="card card-primary card-outline card-tabs">
+            <div class="card-header p-0 pt-1 border-bottom-0">
+                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="newTrainingRequest" data-toggle="pill" href="#newTraining" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">New Training Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="allTrainingHistories" data-toggle="pill" href="#trainingHistory" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Training Histroy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="custom-tabs-three-tabContent">
+                    <div class="tab-pane fade show active" id="newTraining" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
+                        <div class="form-group row">
+                            <label class="control-label col-md-1 col-sm-1">Date</label>
+                            <div class="input-group date col-md-3 col-sm-3" id="Rdate" data-target-input="nearest">
+                                <input type="text" id="ReqDate" class="form-control datetimepicker-input" data-target="#Rdate" data-toggle="datetimepicker" />
+                                <div class="input-group-append" data-target="#Rdate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" id="btnSearch" class="btn btn-secondary col-md-12 col-sm-12"><i class="fa fa-search"></i> Search</button>
+                            </div>
+                        </div>
+                        <div class="card-footer table-responsive col-md-10">
+                            <table id="example1" class="table table-bordered table-striped tblNewRequest">
+                                <thead>
+                                    <tr>
+                                        <th>Time Slot</th>
+                                        <th>Requested Member Id</th>
+                                        <th>Requested Member Name</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyPack">
+                                </tbody>
+                            </table>
+                            <div class="msg-block" id="noRecordspack">
+                                <label>No Records found.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="trainingHistory" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
+                        <div class="form-group row ">
+                            <div class="form-group col-md-3">
+                                <label>Year</label>
+                                <div class="col-md-12 col-sm-12 ">
+                                    <select class="form-control" id="Year"></select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Month</label>
+                                <div class="col-md-12 col-sm-12">
+                                    <select class="form-control" id="Month"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer table-responsive col-md-10">
+                            <table id="example1" class="table table-bordered table-striped tblRequestHistroy">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Time Slot</th>
+                                        <th>Requested Member Id</th>
+                                        <th>Requested Member Name</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyidMem">
+                                </tbody>
+                            </table>
+                            <div class="msg-block" id="noRecordsmem">
+                                <label>No Records found.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="wait" class="loading-gif"><img src="~/dist/img/Loading.gif" width="70" height="70" /><br></div>
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+    <input type="hidden" id="NewTrainingRequest" value="@Url.Action("NewTrainingRequest", "Home")" />
+    <input type="hidden" id="TrainingRequestHistroy" value="@Url.Action("TrainingRequestHistroy", "Home")" />
+    <input type="hidden" id="UpdateRequestTrainerStatus" value="@Url.Action("UpdateRequestTrainerStatus", "Home")" />
+    <input type="hidden" id="GetStartandEndYear" value="@Url.Action("GetTrainingStartandEndYear", "Home")" />
+</div>
+<script src="~/js/page.employeeHome.js"></script>
